@@ -1,0 +1,325 @@
+.encabezado {
+  background-color: #1f3864;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.encabezado nav a {
+  color: white;
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.contenido {
+  padding: 2rem;
+}
+
+.contenido h2 {
+  color: #1f3864;
+}
+
+.tarjetas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tarjeta {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1;
+  min-width: 200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #2e75b6;
+}
+
+.tarjeta img {
+  width: 48px;
+}
+
+.pie {
+  text-align: center;
+  padding: 1rem;
+  background-color: #1f3864;
+  color: white;
+}
+
+
+
+/* ===== ESTILOS GENERALES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f3f6fb;
+  color: #333d4b;
+  line-height: 1.6;
+}
+
+/* ===== ESTRUCTURA PRINCIPAL ===== */
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "encabezado encabezado"
+    "sidebar contenido"
+    "pie pie";
+}
+
+/* ===== ENCABEZADO ===== */
+.encabezado {
+  grid-area: encabezado;
+  background-color: #1f3864;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 3px 10px rgba(31, 56, 100, 0.15);
+}
+
+.encabezado h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.encabezado nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.encabezado nav a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.encabezado nav a:hover {
+  color: #9dc9ff;
+}
+
+/* ===== SIDEBAR ===== */
+.Sidebar {
+  grid-area: sidebar;
+  background-color: #ffffff;
+  padding: 1.5rem 1rem;
+  border-right: 1px solid #dce4ef;
+  display: flex;
+  flex-direction: column;
+}
+
+.Sidebar-titulo {
+  color: #1f3864;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  text-transform: capitalize;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-menu li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #46556b;
+  text-decoration: none;
+  border-radius: 8px;
+  text-transform: capitalize;
+  transition: all 0.25s;
+}
+
+.sidebar-menu a:hover {
+  background-color: #eaf2fc;
+  color: #1f3864;
+  transform: translateX(4px);
+}
+
+.sidebar-pie {
+  margin-top: auto;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #7b8798;
+}
+
+/* ===== CONTENIDO ===== */
+.contenido {
+  grid-area: contenido;
+  padding: 2rem;
+  min-width: 0;
+}
+
+.contenido > h2 {
+  color: #1f3864;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== CONTENEDOR DE TARJETAS ===== */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+/* ===== TARJETAS INDIVIDUALES ===== */
+.tarjeta {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  min-width: 0;
+  box-shadow: 0 3px 10px rgba(31, 56, 100, 0.08);
+  border-top: 4px solid #2e75b6;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(31, 56, 100, 0.13);
+}
+
+.tarjeta h3 {
+  color: #1f3864;
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.tarjeta img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
+
+/* ===== TUS DATOS PERSONALES ACTUALES ===== */
+.tarjetas > h1,
+.tarjetas > h2,
+.tarjetas > h3,
+.tarjetas > h4 {
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(31, 56, 100, 0.08);
+  border-top: 4px solid #2e75b6;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.tarjetas > h1 {
+  color: #1f3864;
+}
+
+.tarjetas > h2 {
+  color: #2e75b6;
+}
+
+.tarjetas > h3 {
+  color: #46556b;
+}
+
+.tarjetas > h4 {
+  color: #1b806a;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+.pie,
+.PiePagina {
+  grid-area: pie;
+  background-color: #1f3864;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "encabezado"
+      "sidebar"
+      "contenido"
+      "pie";
+  }
+
+  .encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .encabezado nav {
+    gap: 0.75rem;
+  }
+
+  .Sidebar {
+    border-right: none;
+    border-bottom: 1px solid #dce4ef;
+    padding: 1rem;
+  }
+
+  .Sidebar-titulo {
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .sidebar-menu li {
+    margin: 0;
+  }
+
+  .sidebar-menu a {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .sidebar-pie {
+    margin-top: 1rem;
+    padding-top: 0;
+  }
+
+  .contenido {
+    padding: 1.25rem;
+  }
+
+  .contenido > h2 {
+    font-size: 1.4rem;
+  }
+
+  .tarjetas {
+    grid-template-columns: 1fr;
+  }
+}
