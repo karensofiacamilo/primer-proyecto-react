@@ -11,6 +11,7 @@ function MenuUsuario({ usuario }) {
       </button>
 
       <ul className="menu-desplegable">
+        <li><a href="#">👤 {usuario.correo}</a></li>
         <li><a href="#">👤 Mi perfil</a></li>
         <li><a href="#">⚙️ Configuración</a></li>
         <li className="separador"></li>

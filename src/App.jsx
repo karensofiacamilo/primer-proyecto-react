@@ -13,19 +13,21 @@ function App (){
   nombre: 'karen sofia camilo',
   rol: 'Aprendiz ADSO',
   foto: fotoPerfil,
-  correo: correoelectronico,
+  correo: 'karensofiacamilo70@gmail.com',
+  telefono:'3216330725',
+  barrio:'tomas cipriano',
 }
   return(
     <>
     <div className='layout'>
     <Encabezado usuario={usuario} />
-    <Sidebar />
+    <Sidebar usuario={usuario} />
 
     <main className='contenido'>
 
   
       <h2>Bienvenidos al programa {programa}</h2>
-      <Presentacion/>
+      <Presentacion usuario={usuario}/>
 
       <section className="tarjetas">
         
