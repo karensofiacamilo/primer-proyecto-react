@@ -1,325 +1,324 @@
-.encabezado {
-  background-color: #1f3864;
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Variables de color y fuentes globales */
+:root {
+  --color-primario: #39a900; /* Verde SENA */
+  --color-secundario: #00324d; /* Azul oscuro corporativo */
+  --color-fondo: #f4f7f6;
+  --color-superficie: #ffffff;
+  --color-texto: #333333;
+  --color-texto-mutado: #666666;
+  --color-borde: #e0e0e0;
+  --color-destacado: #fff3cd;
+  --color-destacado-borde: #ffeba2;
+  --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.encabezado h1 {
+/* Reset básico */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-size: 1.5rem;
+  padding: 0;
 }
 
-.encabezado nav a {
-  color: white;
-  margin-left: 1rem;
-  text-decoration: none;
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-principal);
 }
 
+/* Estructura Principal de la Aplicación (Layout Grid) */
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* Contenido Principal */
 .contenido {
+  grid-area: main;
   padding: 2rem;
 }
 
 .contenido h2 {
-  color: #1f3864;
+  color: var(--color-secundario);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
 }
 
+/* Sección de Tarjetas (Grid de 3 columnas flexibles) */
 .tarjetas {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.tarjeta {
-  background-color: white;
-  border-radius: 8px;
-  padding: 1rem;
-  flex: 1;
-  min-width: 200px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-top: 4px solid #2e75b6;
-}
-
-.tarjeta img {
-  width: 48px;
-}
-
-.pie {
-  text-align: center;
-  padding: 1rem;
-  background-color: #1f3864;
-  color: white;
-}
-
-
-
-/* ===== ESTILOS GENERALES ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #f3f6fb;
-  color: #333d4b;
-  line-height: 1.6;
-}
-
-/* ===== ESTRUCTURA PRINCIPAL ===== */
-.layout {
-  min-height: 100vh;
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-    "encabezado encabezado"
-    "sidebar contenido"
-    "pie pie";
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 2rem;
 }
 
-/* ===== ENCABEZADO ===== */
+/* ---- ESTILOS DE COMPONENTES ---- */
+
+/* 1. Componente: Encabezado */
 .encabezado {
-  grid-area: encabezado;
-  background-color: #1f3864;
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  box-shadow: 0 3px 10px rgba(31, 56, 100, 0.15);
+  background-color: var(--color-secundario);
+  color: white;
+  display: flex;
+  grid-area: header;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.encabezado div.encabezado {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
 }
 
 .encabezado h1 {
-  font-size: 1.5rem;
-  margin: 0;
-}
-
-.encabezado nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
 }
 
 .encabezado nav a {
-  color: white;
+  color: #e0e0e0;
+  font-weight: 500;
+  margin-right: 1.5rem;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .encabezado nav a:hover {
-  color: #9dc9ff;
+  color: var(--color-primario);
 }
 
-/* ===== SIDEBAR ===== */
-.Sidebar {
-  grid-area: sidebar;
-  background-color: #ffffff;
-  padding: 1.5rem 1rem;
-  border-right: 1px solid #dce4ef;
+/* 2. Componente: MenuUsuario */
+.menu-usuario {
+  position: relative;
+}
+
+.menu-usuario-boton {
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.avatar {
+  border: 2px solid var(--color-primario);
+  border-radius: 50%;
+  height: 45px;
+  object-fit: cover;
+  width: 45px;
+}
+
+.menu-usuario-datos {
   display: flex;
   flex-direction: column;
 }
 
+.menu-usuario-nombre {
+  color: white;
+  font-weight: bold;
+}
+
+.menu-usuario-rol {
+  color: #b0c4de;
+  font-size: 0.8rem;
+}
+
+/* Oculto por defecto, se puede activar añadiendo una clase con JS o con :focus-within */
+.menu-desplegable {
+  background-color: var(--color-superficie);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: none; 
+  list-style: none;
+  padding: 0.5rem 0;
+  position: absolute;
+  right: 0;
+  top: 110%;
+  width: 160px;
+  z-index: 10;
+}
+
+.menu-usuario:hover .menu-desplegable {
+  display: block; /* Muestra el menú al pasar el mouse por encima */
+}
+
+.menu-desplegable li a {
+  color: var(--color-texto);
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+.menu-desplegable li a:hover {
+  background-color: var(--color-fondo);
+}
+
+.menu-desplegable .separador {
+  background-color: var(--color-borde);
+  height: 1px;
+  margin: 0.5rem 0;
+}
+
+.menu-desplegable .cerrar-sesion {
+  color: #d9534f;
+}
+
+/* 3. Componente: Sidebar */
+.Sidebar {
+  background-color: var(--color-superficie);
+  border-right: 1px solid var(--color-borde);
+  display: flex;
+  flex-direction: column;
+  grid-area: sidebar;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+}
+
 .Sidebar-titulo {
-  color: #1f3864;
-  font-size: 1.25rem;
-  margin-bottom: 1.5rem;
-  padding-left: 0.5rem;
-  text-transform: capitalize;
+  color: var(--color-secundario);
+  font-size: 1.1rem;
+  text-transform: uppercase;
 }
 
 .sidebar-menu {
   list-style: none;
+  margin-top: 2rem;
 }
 
 .sidebar-menu li {
-  margin-bottom: 0.5rem;
-}
-
-.sidebar-menu a {
-  display: block;
-  padding: 0.75rem 1rem;
-  color: #46556b;
-  text-decoration: none;
-  border-radius: 8px;
-  text-transform: capitalize;
-  transition: all 0.25s;
-}
-
-.sidebar-menu a:hover {
-  background-color: #eaf2fc;
-  color: #1f3864;
-  transform: translateX(4px);
-}
-
-.sidebar-pie {
-  margin-top: auto;
-  padding-top: 2rem;
-  text-align: center;
-  font-size: 0.8rem;
-  color: #7b8798;
-}
-
-/* ===== CONTENIDO ===== */
-.contenido {
-  grid-area: contenido;
-  padding: 2rem;
-  min-width: 0;
-}
-
-.contenido > h2 {
-  color: #1f3864;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-}
-
-/* ===== CONTENEDOR DE TARJETAS ===== */
-.tarjetas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-  align-items: stretch;
-}
-
-/* ===== TARJETAS INDIVIDUALES ===== */
-.tarjeta {
-  background-color: white;
-  border-radius: 10px;
-  padding: 1.5rem;
-  min-width: 0;
-  box-shadow: 0 3px 10px rgba(31, 56, 100, 0.08);
-  border-top: 4px solid #2e75b6;
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-
-.tarjeta:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 18px rgba(31, 56, 100, 0.13);
-}
-
-.tarjeta h3 {
-  color: #1f3864;
-  margin-bottom: 0.5rem;
-}
-
-.tarjeta p {
-  color: #64748b;
-  font-size: 0.95rem;
-}
-
-.tarjeta img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
   margin-bottom: 0.75rem;
 }
 
-/* ===== TUS DATOS PERSONALES ACTUALES ===== */
-.tarjetas > h1,
-.tarjetas > h2,
-.tarjetas > h3,
-.tarjetas > h4 {
-  background-color: white;
-  padding: 1.25rem;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(31, 56, 100, 0.08);
-  border-top: 4px solid #2e75b6;
+.sidebar-menu a {
+  border-radius: 4px;
+  color: var(--color-texto-mutado);
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.sidebar-menu a:hover {
+  background-color: rgba(57, 169, 0, 0.1);
+  color: var(--color-primario);
+  font-weight: 600;
+}
+
+.sidebar-pie {
+  color: var(--color-texto-mutado);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* 4. Componente: Presentacion */
+.contenido section:first-of-type {
+  background-color: var(--color-superficie);
+  border-left: 4px solid var(--color-primario);
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+}
+
+.contenido section:first-of-type h1 {
+  color: var(--color-primario);
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.contenido section:first-of-type h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contenido section:first-of-type h3 {
+  color: var(--color-texto-mutado);
   font-size: 1rem;
-  overflow-wrap: anywhere;
+  font-weight: normal;
+  margin-bottom: 0.4rem;
 }
 
-.tarjetas > h1 {
-  color: #1f3864;
+/* 5. Componente: Tarjeta */
+.tarjeta, .tarjeta-destacada {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.tarjetas > h2 {
-  color: #2e75b6;
+.tarjeta-destacada {
+  background-color: var(--color-destacado);
+  border-color: var(--color-destacado-borde);
 }
 
-.tarjetas > h3 {
-  color: #46556b;
+.tarjeta:hover, .tarjeta-destacada:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
 }
 
-.tarjetas > h4 {
-  color: #1b806a;
+.tarjeta-icono {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-/* ===== PIE DE PÁGINA ===== */
-.pie,
-.PiePagina {
-  grid-area: pie;
-  background-color: #1f3864;
-  color: white;
-  text-align: center;
+.tarjeta h3 {
+  color: var(--color-secundario);
+  text-transform: capitalize;
+}
+
+.tarjeta p {
+  color: var(--color-texto-mutado);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.tarjeta-horas {
+  color: var(--color-primario) !important;
+  font-weight: bold;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+/* 6. Componente: PiePagina */
+.pie {
+  background-color: var(--color-secundario);
+  color: #ffffff;
+  grid-area: footer;
   padding: 1rem;
-  font-size: 0.9rem;
+  text-align: center;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ---- RESPONSIVE DESIGN ---- */
 @media (max-width: 768px) {
   .layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
-      "encabezado"
+      "header"
       "sidebar"
-      "contenido"
-      "pie";
-  }
-
-  .encabezado {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-
-  .encabezado nav {
-    gap: 0.75rem;
-  }
-
-  .Sidebar {
-    border-right: none;
-    border-bottom: 1px solid #dce4ef;
-    padding: 1rem;
-  }
-
-  .Sidebar-titulo {
-    margin-bottom: 0.75rem;
-  }
-
-  .sidebar-menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-  }
-
-  .sidebar-menu li {
-    margin: 0;
-  }
-
-  .sidebar-menu a {
-    padding: 0.6rem 0.75rem;
-  }
-
-  .sidebar-pie {
-    margin-top: 1rem;
-    padding-top: 0;
-  }
-
-  .contenido {
-    padding: 1.25rem;
-  }
-
-  .contenido > h2 {
-    font-size: 1.4rem;
-  }
-
-  .tarjetas {
+      "main"
+      "footer";
     grid-template-columns: 1fr;
+  }
+  
+  .Sidebar {
+    border-bottom: 1px solid var(--color-borde);
+    border-right: none;
+  }
+  
+  .encabezado div.encabezado {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }

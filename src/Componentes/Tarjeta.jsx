@@ -1,11 +1,13 @@
-import reactLogo from '../assets/react.svg'
 
-function Tarjeta(){
+
+function Tarjeta({icono,titulo,descripcion,horas,destacada}){
+   
     return(
-        <article className='tarjeta'>
-            <img src={reactLogo} alt ='logo de React'/>
-            <h3>React</h3>
-            <p>Biblioteca de javascript para construir interfaces von expresiones</p>
+        <article className={destacada ? 'tarjeta-destacada': "tarjeta"}> evalua la condicion
+            <span className='tarjeta-icono'>{icono}</span>
+            <h3>{titulo}</h3>
+            <p>{descripcion}</p>
+            <p className="tarjeta-horas"> {horas} horas </p>
         </article>
                 
     )
