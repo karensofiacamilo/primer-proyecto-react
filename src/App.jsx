@@ -1,10 +1,14 @@
-import './App.css'
+import "./App.css"
 import Encabezado from './Componentes/Encabezado';
 import Sidebar from './Componentes/Sidebar';
 import PiePagina from './Componentes/PiePagina';
 import Tarjeta from './Componentes/Tarjeta';
+import {tecnologias}from'./data/tecnologia.js';
 import Presentacion from './Componentes/Presentacion';
 import fotoPerfil from './Img/foto2.jpg';
+import Inicio from './paginas/Inicio.jsx';
+import Perfil from "./paginas/Perfil.jsx"
+import {Route, Routes} from "react-router"
 
 
 function App (){
@@ -24,41 +28,12 @@ function App (){
     <Sidebar usuario={usuario} />
 
     <main className='contenido'>
-
-  
-      <h2>Bienvenidos al programa {programa}</h2>
-      <Presentacion usuario={usuario}/>
-
-      <section className="tarjetas">
-        
-        <Tarjeta
-        icono="😘"
-        titulo="React"
-        descripcion= "Herramienta de javascript para construir interface con componentes"
-        horas={120}
-        destacada={true}
-        />
-
-        <Tarjeta
-        icono="😘"
-        titulo="vite"
-        descripcion="herramienta que crea,ejecuta y empaqueta el proyecto"
-        horas={60}
-        destacada={false}
-        />
-
-        <Tarjeta
-        icono=""
-        titulo="ESlint"
-        descripcion="revisa la calidad del codigo "
-        horas={20}
-        destacada={true}
-        />
-
-      </section>
+      <Routes>
+        <Route path="/" element= {<Inicio/>} />
+        <Route path="/perfil" element = {<Perfil />} />
+      </Routes>
     </main>
     <PiePagina/>
-    
     </div>
     </>
   )
